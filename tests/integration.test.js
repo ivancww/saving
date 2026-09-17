@@ -1,0 +1,3 @@
+const assert=require('node:assert/strict'),fs=require('node:fs');const html=fs.readFileSync('index.html','utf8'),app=fs.readFileSync('app.js','utf8'),sw=fs.readFileSync('sw.js','utf8');
+for(const mode of ['frontend','user','admin'])assert.match(app,new RegExp(`['"]${mode}['"]`));
+assert.match(app,/new URLSearchParams\(location\.search\)\.get\('avaEntry'\)/);assert.match(app,/avaSurface=user/);assert.match(app,/avaSurface=admin/);assert.match(html,/id="ava-back-link"/);assert.match(html,/id="integration-context"/);assert.match(sw,/saving-v1\.0\.1/);assert.doesNotMatch(app,/localStorage|sessionStorage|indexedDB/);console.log('Saving three-entry integration passed');

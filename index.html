@@ -7,7 +7,7 @@
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="default">
   <meta name="apple-mobile-web-app-title" content="AVA Saving">
-  <title>AVA Saving v1.0.0</title>
+  <title>AVA Saving v1.0.1</title>
   <link rel="manifest" href="./manifest.json">
   <link rel="apple-touch-icon" href="./icon.svg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -20,10 +20,11 @@
 </head>
 <body class="ava-front">
   <header class="ava-front__header">
-    <strong>AVA Saving</strong><span class="version">v1.0.0</span>
+    <div class="header-brand"><a id="ava-back-link" class="ava-back-link" href="https://ivancww.github.io/avaplatform/" hidden>← AVA</a><strong>AVA Saving</strong></div><span class="version">v1.0.1</span>
   </header>
   <div class="ava-front__progress" aria-hidden="true"><div class="ava-front__progress-fill" style="width:100%"></div></div>
   <main class="ava-front__container">
+    <aside id="integration-context" class="integration-context" hidden aria-live="polite"><strong id="integration-title"></strong><span id="integration-copy"></span></aside>
     <section class="ava-front__content">
       <h1 class="ava-front__title">豐盛人生 ── 暖心現金流規劃</h1>
       <p class="ava-front__support">用實際數字睇清楚，而家嘅一筆資源可以隨時間帶你去到幾遠。</p>
