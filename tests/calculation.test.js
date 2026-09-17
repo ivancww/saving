@@ -1,0 +1,5 @@
+const fs=require('node:fs'),vm=require('node:vm'),assert=require('node:assert/strict');const context={globalThis:{},Intl,console};vm.createContext(context);vm.runInContext(fs.readFileSync('app.js','utf8'),context);const core=context.globalThis.SavingCore;
+const data=[{year:5,rate:.05,mult:1.2},{year:10,rate:.05,mult:1.6},{year:20,rate:.05,mult:2.5}];
+assert.equal(core.interpolatedMultiplier(data,7.5),1.4);assert.equal(core.interpolatedMultiplier(data,2.5),.6);assert.equal(core.interpolatedMultiplier(data,30),2.5);
+const rows=core.calculateSaving({principal:200000,startAge:40,plan:'3year 5%',data,displayYears:[5,10]});assert.equal(rows[0].annual,10000);assert.equal(rows[0].cumulative,30000);assert.equal(rows[0].balance,240000);assert.equal(rows[1].cumulative,80000);assert.equal(rows[1].balance,320000);
+const roll=core.calculateSaving({principal:200000,startAge:40,plan:'自動滾存',data,displayYears:[5,10]});assert.equal(roll[0].annual,0);assert.equal(Number(roll[0].interest.toFixed(2)),.2);console.log('saving calculation baseline passed');
