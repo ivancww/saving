@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#1e3a8a">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="apple-mobile-web-app-title" content="AVA Saving">
+  <title>AVA Saving v1.0.0</title>
+  <link rel="manifest" href="./manifest.json">
+  <link rel="apple-touch-icon" href="./icon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./design-system/tokens.css">
+  <link rel="stylesheet" href="./design-system/components.css">
+  <link rel="stylesheet" href="./design-system/frontend.css">
+  <link rel="stylesheet" href="./module.css">
+</head>
+<body class="ava-front">
+  <header class="ava-front__header">
+    <strong>AVA Saving</strong><span class="version">v1.0.0</span>
+  </header>
+  <div class="ava-front__progress" aria-hidden="true"><div class="ava-front__progress-fill" style="width:100%"></div></div>
+  <main class="ava-front__container">
+    <section class="ava-front__content">
+      <h1 class="ava-front__title">豐盛人生 ── 暖心現金流規劃</h1>
+      <p class="ava-front__support">用實際數字睇清楚，而家嘅一筆資源可以隨時間帶你去到幾遠。</p>
+      <div class="input-grid" aria-label="Saving 假設">
+        <label class="ava-field"><span class="ava-label">一筆過儲蓄本金（HK$）</span><input class="ava-input money-input" id="saving-principal" inputmode="numeric" value="200,000"></label>
+        <label class="ava-field"><span class="ava-label">現時年齡</span><input class="ava-input" id="saving-age" type="number" value="40" min="1" max="80"></label>
+        <label class="ava-field plan-field"><span class="ava-label">提取方案（雲端實時讀取）</span><select class="ava-select" id="saving-plan-select">
+          <option value="1year 4%">方案 A：第 1 年起提取年金（4%）</option>
+          <option value="3year 5%" selected>方案 B：第 3 年起提取年金（5%）</option>
+          <option value="5year 6%">方案 C：第 5 年起提取年金（6%）</option>
+          <option value="自動滾存">方案 D：全自動滾存（歲月純增值）</option>
+        </select></label>
+      </div>
+      <div id="status" class="status" role="status" aria-live="polite"></div>
+      <div class="table-responsive" tabindex="0" aria-label="Saving 結果表，可橫向捲動">
+        <table id="saving-table">
+          <thead><tr><th>保單年度（年齡）</th><th>每年領取長糧（年金）</th><th>累積領取長糧（年金）</th><th>悠享年金結餘</th><th id="interest-heading" hidden>年息</th></tr></thead>
+          <tbody id="saving-table-body"></tbody>
+        </table>
+      </div>
+      <button class="ava-button ava-button--secondary detail-toggle" id="toggle-interest-btn" type="button" aria-expanded="false">顯示年息</button>
+    </section>
+  </main>
+  <script src="./app.js"></script>
+</body>
+</html>
